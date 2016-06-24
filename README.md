@@ -68,6 +68,8 @@ TODO
 ----
 
 * Create data model
+  + Move embedly extraction to a worker
+  + Handle errors when extracting
 * Write tests
 * Seed data from Slack
 * Create basic layout that displays the feed
