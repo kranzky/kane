@@ -7,7 +7,7 @@ Design
 ------
 
 * User
-  + handle
+  + name
   + profile
   + settings
   +
@@ -61,6 +61,7 @@ Design
   + percentage viewed
 
 * Reaction
+  + emoji
   + stats
 
 TODO

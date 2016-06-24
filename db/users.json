@@ -1,9 +1,28 @@
 [
   {
-    "name": "kranzky"
+    "name": "kranzky",
+    "profile": {
+      "name": "Jason Hutchens",
+      "image": ""
+    },
+    "settings": {
+      "credits": 3
+    },
+    "shares": [
+      {
+        "url": "",
+        "date": ""
+      }
+    ]
   },
   {
-    "name": "beetlefeet"
+    "name": "beetlefeet",
+    "shares": [
+      {
+        "url": "http://www.wired.com/2016/01/in-a-huge-breakthrough-googles-ai-beats-a-top-player-at-the-game-of-go/",
+        "date": "2016-01-28"
+      }
+    ]
   },
   {
     "name": "rockethandsrob"
