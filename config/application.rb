@@ -15,5 +15,9 @@ Bundler.require(*Rails.groups)
 
 module Kane
   class Application < Rails::Application
+    config.active_record.schema_format = :sql
+    config.generators do |g|
+      g.factory_girl dir: 'spec/factories'
+    end
   end
 end
