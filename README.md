@@ -68,14 +68,19 @@ TODO
 ----
 
 * Create data model
-  + Move embedly extraction to a worker
   + Handle errors when extracting
+  + Ensure published at works
+  + Add source and authors
+  + Process images through cloudinary
+  + Move extraction to a worker
 * Write tests
 * Seed data from Slack
 * Create basic layout that displays the feed
+  + Download content and image dimensions so viewing is instantaneous
+  + Stream images on view
 * Twitter authentication
 * Ability to post
-* Job to schedule posts
+* Job to extract and to schedule posts
 * Deploy to Heroku
 
 Copyright
