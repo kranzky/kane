@@ -3,15 +3,77 @@ KANE
 
 Share your best link each day.
 
+Design
+------
+
+* User
+  + handle
+  + profile
+  + settings
+  +
+  + shares
+  + stats
+  + curators
+
+* Profile
+  + image
+  + name
+
+* Settings
+  + subscribed
+  + credits
+  + timezone
+
+* Share
+  + position
+  + user
+  + content
+
+* Content
+  + title
+  + description
+  + body
+  + publish date
+  + url
+  + creator
+  + tags
+  + thumbnail
+  + type (banned, external, naive, premium)
+  + language
+  +
+  + shares
+  + stats
+
+* Creator
+  + name
+  + favicon
+  + url
+  + contents
+
+* Stat
+  + user
+  + content
+  + reaction
+  + saved / deleted / whatever
+  + seen count
+  + view count
+  + total time
+  + percentage viewed
+
+* Reaction
+  + stats
+
 TODO
 ----
 
+* Create data model
+* Write tests
+* Seed data from Slack
 * Create basic layout that displays the feed
-* Create models, migrations and tests
-* Create seed data based on what we've posted
 * Twitter authentication
-* Ability to post from UI
+* Ability to post
 * Job to schedule posts
+* Deploy to Heroku
 
 Copyright
 ---------
