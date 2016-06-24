@@ -4,16 +4,18 @@ ruby "2.3.1"
 gem 'rails', '~> 5.0.0.rc2'
 gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 3.4.0'
-gem 'sass-rails', '~> 5.0.4'
-gem 'uglifier', '~> 3.0.0'
-gem 'coffee-rails', '~> 4.1.1'
 gem 'turbolinks', '~> 5.0.0.beta2'
 gem 'jbuilder', '~> 2.5.0'
-gem 'slim', '~> 3.0.7'
 
+gem 'embedly', '~> 1.9.1'
+
+gem 'sass-rails', '~> 5.0.4'
+gem 'slim', '~> 3.0.7'
+gem 'coffee-rails', '~> 4.1.1'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'underscore-rails', '~> 1.8.3'
 gem 'semantic-ui-sass', '~> 2.1.8.0'
+gem 'uglifier', '~> 3.0.0'
 
 group :development do
   gem 'gemfile_updater', '~> 0.1.0'
