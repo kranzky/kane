@@ -1,6 +1,6 @@
 class Content < ApplicationRecord
   has_many :posts, inverse_of: :content, dependent: :restrict_with_exception
-  belongs_to :provider, inverse_of: :contents, counter_cache: true
+  belongs_to :provider, inverse_of: :contents, required: true, counter_cache: true
 
   validates :url, presence: true, uniqueness: true
   validates :body, presence: true
