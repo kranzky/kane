@@ -1,14 +1,17 @@
 class CreateContents < ActiveRecord::Migration[5.0]
   def up
+    enable_extension 'citext'
     execute <<-SQL
       CREATE TYPE content_access AS ENUM ('native', 'external', 'premium', 'banned');
     SQL
     create_table :contents do |t|
-      t.text :url, null: false
-      t.text :title, default: ""
-      t.text :description, default: ""
-      t.text :body, null: false
-      t.text :thumbnail
+      t.integer :posts_count, null: false, default: 0
+      t.references :provider, null: false
+      t.citext :url, null: false
+      t.text :title, null: false, default: ""
+      t.text :description, null: false, default: ""
+      t.text :body, null: false, default: ""
+      t.citext :thumbnail
       t.text :language
       t.text :tags, array: true, default: []
       t.column :access, :content_access, null: false, default: "native"
@@ -16,8 +19,10 @@ class CreateContents < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :contents, :url, unique: true
+    create_join_table :contents, :authors
   end
   def down
+    drop_join_table :announcements, :authors
     drop_table :contents
     execute <<-SQL
       DROP TYPE content_access;
