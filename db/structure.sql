@@ -55,9 +55,54 @@ CREATE TYPE content_access AS ENUM (
 );
 
 
+--
+-- Name: statistic_state; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE statistic_state AS ENUM (
+    'none',
+    'saved',
+    'deleted'
+);
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+--
+-- Name: accounts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE accounts (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    subscribed boolean DEFAULT false NOT NULL,
+    credits integer DEFAULT 0 NOT NULL,
+    timezone text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE accounts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
+
 
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
@@ -72,16 +117,60 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: authors; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE authors (
+    id integer NOT NULL,
+    name citext NOT NULL,
+    url citext,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: authors_contents; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE authors_contents (
+    content_id integer NOT NULL,
+    author_id integer NOT NULL
+);
+
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE authors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
+
+
+--
 -- Name: contents; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE contents (
     id integer NOT NULL,
-    url text NOT NULL,
-    title text DEFAULT ''::text,
-    description text DEFAULT ''::text,
-    body text NOT NULL,
-    thumbnail text,
+    posts_count integer DEFAULT 0 NOT NULL,
+    provider_id integer NOT NULL,
+    url citext NOT NULL,
+    title text DEFAULT ''::text NOT NULL,
+    description text DEFAULT ''::text NOT NULL,
+    body text DEFAULT ''::text NOT NULL,
+    thumbnail citext,
     language text,
     tags text[] DEFAULT '{}'::text[],
     access content_access DEFAULT 'native'::content_access NOT NULL,
@@ -111,6 +200,108 @@ ALTER SEQUENCE contents_id_seq OWNED BY contents.id;
 
 
 --
+-- Name: posts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE posts (
+    id integer NOT NULL,
+    statistics_count integer DEFAULT 0 NOT NULL,
+    user_id integer NOT NULL,
+    content_id integer,
+    url citext NOT NULL,
+    "position" integer,
+    posted_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- Name: profiles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE profiles (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    name citext,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE profiles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
+
+
+--
+-- Name: providers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE providers (
+    id integer NOT NULL,
+    contents_count integer DEFAULT 0 NOT NULL,
+    name citext NOT NULL,
+    url citext NOT NULL,
+    favicon citext NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: providers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE providers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: providers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE providers_id_seq OWNED BY providers.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -120,11 +311,51 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: statistics; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE statistics (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    post_id integer NOT NULL,
+    reaction citext,
+    state statistic_state DEFAULT 'none'::statistic_state NOT NULL,
+    seen_count integer DEFAULT 0 NOT NULL,
+    view_count integer DEFAULT 0 NOT NULL,
+    view_seconds integer DEFAULT 0 NOT NULL,
+    view_percent integer DEFAULT 0 NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: statistics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE statistics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: statistics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE statistics_id_seq OWNED BY statistics.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE users (
     id integer NOT NULL,
+    posts_count integer DEFAULT 0 NOT NULL,
+    statistics_count integer DEFAULT 0 NOT NULL,
     name citext NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -154,6 +385,20 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY contents ALTER COLUMN id SET DEFAULT nextval('contents_id_seq'::regclass);
 
 
@@ -161,7 +406,43 @@ ALTER TABLE ONLY contents ALTER COLUMN id SET DEFAULT nextval('contents_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY providers ALTER COLUMN id SET DEFAULT nextval('providers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY statistics ALTER COLUMN id SET DEFAULT nextval('statistics_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
 
 
 --
@@ -173,11 +454,43 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
+-- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY authors
+    ADD CONSTRAINT authors_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: contents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY contents
     ADD CONSTRAINT contents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profiles
+    ADD CONSTRAINT profiles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: providers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY providers
+    ADD CONSTRAINT providers_pkey PRIMARY KEY (id);
 
 
 --
@@ -189,6 +502,14 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
+-- Name: statistics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY statistics
+    ADD CONSTRAINT statistics_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -197,10 +518,73 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_accounts_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_accounts_on_user_id ON accounts USING btree (user_id);
+
+
+--
+-- Name: index_contents_on_provider_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_contents_on_provider_id ON contents USING btree (provider_id);
+
+
+--
 -- Name: index_contents_on_url; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_contents_on_url ON contents USING btree (url);
+
+
+--
+-- Name: index_posts_on_content_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_content_id ON posts USING btree (content_id);
+
+
+--
+-- Name: index_posts_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_user_id ON posts USING btree (user_id);
+
+
+--
+-- Name: index_profiles_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_profiles_on_user_id ON profiles USING btree (user_id);
+
+
+--
+-- Name: index_providers_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_providers_on_name ON providers USING btree (name);
+
+
+--
+-- Name: index_providers_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_providers_on_url ON providers USING btree (url);
+
+
+--
+-- Name: index_statistics_on_post_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_statistics_on_post_id ON statistics USING btree (post_id);
+
+
+--
+-- Name: index_statistics_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_statistics_on_user_id ON statistics USING btree (user_id);
 
 
 --
@@ -216,6 +600,6 @@ CREATE UNIQUE INDEX index_users_on_name ON users USING btree (name);
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160624080353'), ('20160624083131');
+INSERT INTO schema_migrations (version) VALUES ('20160624080353'), ('20160625062827'), ('20160625062937'), ('20160625062957'), ('20160625063047'), ('20160625063116'), ('20160625063505'), ('20160625063541');
 
 
