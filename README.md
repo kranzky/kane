@@ -11,9 +11,9 @@ Design
   + profile
   + settings
   +
-  + shares
-  + stats
-  + curators
+  + posts
+  + stats (through posts)
+  + users
 
 * Profile
   + image
@@ -24,10 +24,13 @@ Design
   + credits
   + timezone
 
-* Share
+* Post
   + position
+  + shared date
+  + url
   + user
   + content
+  + stats
 
 * Content
   + title
@@ -35,26 +38,31 @@ Design
   + body
   + publish date
   + url
-  + creator
+  + provider
   + tags
   + thumbnail
   + type (banned, external, naive, premium)
   + language
   +
-  + shares
-  + stats
+  + posts
+  + stats (through posts)
+  + authors
 
-* Creator
+* Provider
   + name
   + favicon
   + url
   + contents
 
+* Author
+  + name
+  + url
+
 * Stat
   + user
-  + content
+  + share
   + reaction
-  + saved / deleted / whatever
+  + state (saved / deleted / whatever)
   + seen count
   + view count
   + total time

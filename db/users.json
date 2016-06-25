@@ -1,30 +1,29 @@
 [
   {
-    "name": "kranzky",
+    "name": "beetlefeet",
     "profile": {
-      "name": "Jason Hutchens",
-      "image": ""
+      "name": "Jack Casey"
     },
     "settings": {
-      "credits": 3
+      "timezone": "Australia/Perth"
+    }
+  },
+  {
+    "name": "kranzky",
+    "profile": {
+      "name": "Jason Hutchens"
     },
-    "shares": [
-      {
-        "url": "",
-        "date": ""
-      }
-    ]
+    "settings": {
+      "timezone": "Australia/Perth"
+    }
   },
   {
-    "name": "beetlefeet",
-    "shares": [
-      {
-        "url": "http://www.wired.com/2016/01/in-a-huge-breakthrough-googles-ai-beats-a-top-player-at-the-game-of-go/",
-        "date": "2016-01-28"
-      }
-    ]
-  },
-  {
-    "name": "rockethandsrob"
+    "name": "rockethandsrob",
+    "profile": {
+      "name": "Rob Barnett"
+    },
+    "settings": {
+      "timezone": "Australia/Perth"
+    }
   }
 ]
