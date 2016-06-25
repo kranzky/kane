@@ -6,3 +6,4 @@
 .byebug_history
 /env/*
 /slack/*
+*.swp

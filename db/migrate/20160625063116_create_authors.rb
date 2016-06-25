@@ -6,5 +6,7 @@ class CreateAuthors < ActiveRecord::Migration[5.0]
       t.citext :url
       t.timestamps
     end
+    add_index :authors, :name, unique: true
+    add_index :authors, :url, unique: true
   end
 end
