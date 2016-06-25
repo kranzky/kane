@@ -6,20 +6,14 @@ Share your best link each day.
 TODO
 ----
 
-* Create data model
-  + Handle errors when extracting
-  + Ensure published at works
-  + Add source and authors
-  + Process images through cloudinary
-  + Move extraction to a worker
-* Write tests
-* Seed data from Slack
+* Rename provider to source
+* Write specs
+* Seed data
+* Job to extract content
 * Create basic layout that displays the feed
-  + Download content and image dimensions so viewing is instantaneous
-  + Stream images on view
 * Twitter authentication
 * Ability to post
-* Job to extract and to schedule posts
+* Job to schedule posts
 * Deploy to Heroku
 
 Copyright
