@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :content do
-    provider
+    source
     url { Faker::Internet.url }
     title { Faker::Book.title }
     description { Faker::Lorem.paragraph }

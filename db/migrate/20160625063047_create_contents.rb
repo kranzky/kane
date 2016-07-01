@@ -6,7 +6,7 @@ class CreateContents < ActiveRecord::Migration[5.0]
     SQL
     create_table :contents do |t|
       t.integer :posts_count, null: false, default: 0
-      t.references :provider, null: false
+      t.references :source, null: false
       t.citext :url, null: false
       t.text :title, null: false, default: ""
       t.text :description, null: false, default: ""

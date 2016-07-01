@@ -1,6 +1,6 @@
 class Content < ApplicationRecord
   has_many :posts, inverse_of: :content, dependent: :restrict_with_exception
-  belongs_to :provider, inverse_of: :contents, required: true, counter_cache: true
+  belongs_to :source, inverse_of: :contents, required: true, counter_cache: true
 
   validates :url, presence: true, uniqueness: true
   validates :body, presence: true
@@ -16,11 +16,11 @@ class Content < ApplicationRecord
     embedly = Embedly::API.new(key: Rails.application.secrets.embedly_api_key)
     results = embedly.extract(url: url).first
     # Author.find_or_create
-    # Provider.find_or_create
+    # Source.find_or_create
 #   results.first.authors url/name
 #   results.first.favicon_url
-#   results.first.provider_name
-#   results.first.provider_url
+#   results.first.source_name
+#   results.first.source_url
     Content.create!(
       url: results.url,
       title: results.title,

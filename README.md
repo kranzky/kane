@@ -6,9 +6,8 @@ Share your best link each day.
 TODO
 ----
 
-* Rename provider to source
 * Write specs
-* Seed data
+* Seed data, including reactions
 * Job to extract content
 * Create basic layout that displays the feed
 * Twitter authentication

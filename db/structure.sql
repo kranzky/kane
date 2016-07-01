@@ -165,7 +165,7 @@ ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
 CREATE TABLE contents (
     id integer NOT NULL,
     posts_count integer DEFAULT 0 NOT NULL,
-    provider_id integer NOT NULL,
+    source_id integer NOT NULL,
     url citext NOT NULL,
     title text DEFAULT ''::text NOT NULL,
     description text DEFAULT ''::text NOT NULL,
@@ -268,10 +268,19 @@ ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
 
 
 --
--- Name: providers; Type: TABLE; Schema: public; Owner: -
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE providers (
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+--
+-- Name: sources; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sources (
     id integer NOT NULL,
     contents_count integer DEFAULT 0 NOT NULL,
     name citext NOT NULL,
@@ -283,10 +292,10 @@ CREATE TABLE providers (
 
 
 --
--- Name: providers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sources_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE providers_id_seq
+CREATE SEQUENCE sources_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -295,19 +304,10 @@ CREATE SEQUENCE providers_id_seq
 
 
 --
--- Name: providers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE providers_id_seq OWNED BY providers.id;
-
-
---
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE schema_migrations (
-    version character varying NOT NULL
-);
+ALTER SEQUENCE sources_id_seq OWNED BY sources.id;
 
 
 --
@@ -420,7 +420,7 @@ ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY providers ALTER COLUMN id SET DEFAULT nextval('providers_id_seq'::regclass);
+ALTER TABLE ONLY sources ALTER COLUMN id SET DEFAULT nextval('sources_id_seq'::regclass);
 
 
 --
@@ -486,19 +486,19 @@ ALTER TABLE ONLY profiles
 
 
 --
--- Name: providers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY providers
-    ADD CONSTRAINT providers_pkey PRIMARY KEY (id);
-
-
---
 -- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: sources_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sources
+    ADD CONSTRAINT sources_pkey PRIMARY KEY (id);
 
 
 --
@@ -525,10 +525,24 @@ CREATE INDEX index_accounts_on_user_id ON accounts USING btree (user_id);
 
 
 --
--- Name: index_contents_on_provider_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_authors_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_contents_on_provider_id ON contents USING btree (provider_id);
+CREATE UNIQUE INDEX index_authors_on_name ON authors USING btree (name);
+
+
+--
+-- Name: index_authors_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_authors_on_url ON authors USING btree (url);
+
+
+--
+-- Name: index_contents_on_source_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_contents_on_source_id ON contents USING btree (source_id);
 
 
 --
@@ -560,17 +574,17 @@ CREATE INDEX index_profiles_on_user_id ON profiles USING btree (user_id);
 
 
 --
--- Name: index_providers_on_name; Type: INDEX; Schema: public; Owner: -
+-- Name: index_sources_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_providers_on_name ON providers USING btree (name);
+CREATE UNIQUE INDEX index_sources_on_name ON sources USING btree (name);
 
 
 --
--- Name: index_providers_on_url; Type: INDEX; Schema: public; Owner: -
+-- Name: index_sources_on_url; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_providers_on_url ON providers USING btree (url);
+CREATE UNIQUE INDEX index_sources_on_url ON sources USING btree (url);
 
 
 --

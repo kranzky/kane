@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :provider do
+  factory :source do
     name { Faker::Company.name }
     url { Faker::Internet.url }
   end
