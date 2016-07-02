@@ -6,8 +6,7 @@ Share your best link each day.
 TODO
 ----
 
-* Write specs
-* Seed data, including reactions
+* Finish writing specs
 * Job to extract content
 * Create basic layout that displays the feed
 * Twitter authentication

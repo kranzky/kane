@@ -4,7 +4,7 @@
     "profile": {
       "name": "Jack Casey"
     },
-    "settings": {
+    "account": {
       "timezone": "Australia/Perth"
     }
   },
@@ -13,7 +13,7 @@
     "profile": {
       "name": "Jason Hutchens"
     },
-    "settings": {
+    "account": {
       "timezone": "Australia/Perth"
     }
   },
@@ -22,7 +22,7 @@
     "profile": {
       "name": "Rob Barnett"
     },
-    "settings": {
+    "account": {
       "timezone": "Australia/Perth"
     }
   }
