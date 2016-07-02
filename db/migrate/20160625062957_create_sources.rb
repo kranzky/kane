@@ -5,7 +5,7 @@ class CreateSources < ActiveRecord::Migration[5.0]
       t.integer :contents_count, null: false, default: 0
       t.citext :name, null: false
       t.citext :url, null: false
-      t.citext :favicon, null: false
+      t.citext :favicon
       t.timestamps
     end
     add_index :sources, :name, unique: true

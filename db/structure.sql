@@ -285,7 +285,7 @@ CREATE TABLE sources (
     contents_count integer DEFAULT 0 NOT NULL,
     name citext NOT NULL,
     url citext NOT NULL,
-    favicon citext NOT NULL,
+    favicon citext,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -528,7 +528,7 @@ CREATE INDEX index_accounts_on_user_id ON accounts USING btree (user_id);
 -- Name: index_authors_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_authors_on_name ON authors USING btree (name);
+CREATE INDEX index_authors_on_name ON authors USING btree (name);
 
 
 --
@@ -557,6 +557,13 @@ CREATE UNIQUE INDEX index_contents_on_url ON contents USING btree (url);
 --
 
 CREATE INDEX index_posts_on_content_id ON posts USING btree (content_id);
+
+
+--
+-- Name: index_posts_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_url ON posts USING btree (url);
 
 
 --
@@ -592,6 +599,13 @@ CREATE UNIQUE INDEX index_sources_on_url ON sources USING btree (url);
 --
 
 CREATE INDEX index_statistics_on_post_id ON statistics USING btree (post_id);
+
+
+--
+-- Name: index_statistics_on_reaction; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_statistics_on_reaction ON statistics USING btree (reaction);
 
 
 --

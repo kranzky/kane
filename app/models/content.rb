@@ -1,5 +1,5 @@
 class Content < ApplicationRecord
-  belongs_to :source, inverse_of: :contents, required: true, counter_cache: true
+  belongs_to :source, inverse_of: :contents, counter_cache: true
   has_many :posts, inverse_of: :content, dependent: :restrict_with_exception
   has_and_belongs_to_many :authors, inverse_of: :contents
 
