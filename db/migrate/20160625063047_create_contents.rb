@@ -22,7 +22,7 @@ class CreateContents < ActiveRecord::Migration[5.0]
     create_join_table :contents, :authors
   end
   def down
-    drop_join_table :announcements, :authors
+    drop_join_table :contents, :authors
     drop_table :contents
     execute <<-SQL
       DROP TYPE content_access;

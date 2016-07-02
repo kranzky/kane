@@ -14,6 +14,7 @@ class CreateStatistics < ActiveRecord::Migration[5.0]
       t.integer :view_percent, null: false, default: 0
       t.timestamps
     end
+    add_index :statistics, :reaction
   end
   def down
     drop_table :statistics

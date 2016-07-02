@@ -8,10 +8,10 @@ class Statistic < ApplicationRecord
     deleted: 'deleted'
   }, _prefix: true
 
-# validates :seen_count
-# validates :view_count
-# validates :view_seconds
-# validates :view_percent
+  validates :seen_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :view_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :view_seconds, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :view_percent, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 
   def read?
     self.view_seconds >= 10 && self.view_percent >= 30

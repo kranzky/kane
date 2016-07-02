@@ -10,5 +10,6 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.timestamp :posted_at
       t.timestamps
     end
+    add_index :posts, :url
   end
 end
