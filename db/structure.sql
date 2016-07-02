@@ -623,6 +623,62 @@ CREATE UNIQUE INDEX index_users_on_name ON users USING btree (name);
 
 
 --
+-- Name: fk_rails_42a876aeed; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY statistics
+    ADD CONSTRAINT fk_rails_42a876aeed FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_4f7356567d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contents
+    ADD CONSTRAINT fk_rails_4f7356567d FOREIGN KEY (source_id) REFERENCES sources(id);
+
+
+--
+-- Name: fk_rails_5b5ddfd518; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT fk_rails_5b5ddfd518 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_92931a1d88; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY statistics
+    ADD CONSTRAINT fk_rails_92931a1d88 FOREIGN KEY (post_id) REFERENCES posts(id);
+
+
+--
+-- Name: fk_rails_b1e30bebc8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY accounts
+    ADD CONSTRAINT fk_rails_b1e30bebc8 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_e424190865; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profiles
+    ADD CONSTRAINT fk_rails_e424190865 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_ecbed4745e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT fk_rails_ecbed4745e FOREIGN KEY (content_id) REFERENCES contents(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 

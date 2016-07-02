@@ -3,6 +3,8 @@ class Content < ApplicationRecord
   has_many :posts, inverse_of: :content, dependent: :restrict_with_exception
   has_and_belongs_to_many :authors, inverse_of: :contents
 
+  validates :source, presence: true
+  validates :source_id, uniqueness: true
   validates :url, presence: true, uniqueness: { case_sensitive: false }
   validates :body, presence: true
 
