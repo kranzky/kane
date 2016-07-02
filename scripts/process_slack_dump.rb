@@ -5,10 +5,22 @@ Dir["slack/link-of-the-day/*.json"].each do |filename|
   JSON.parse(File.read(filename)).each do |post|
     next if post["subtype"].present?
     next if post["text"] !~ /<http/
+    reactions = []
+    if post["reactions"].present?
+      post["reactions"].each do |reaction|
+        reaction["users"].each do |user|
+          reactions << {
+            user: user,
+            name: reaction["name"]
+          }
+        end
+      end
+    end
     posts << {
       user: post["user"],
       date: File.basename(filename, '.json'),
-      url: post["text"].strip[1..-1]
+      url: post["text"].strip[1..-1],
+      reactions: reactions
     }
   end
 end
@@ -29,6 +41,9 @@ end
 
 posts.each do |post|
   post[:user] = users[post[:user]][:name]
+  post[:reactions].each do |reaction|
+    reaction[:user] = users[reaction[:user]][:name]
+  end
 end
 
 File.open("db/users.json", "w") do |file|
