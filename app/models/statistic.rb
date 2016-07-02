@@ -9,9 +9,7 @@ class Statistic < ApplicationRecord
   }, _prefix: true
 
   validates :user, presence: true
-  validates :user_id, uniqueness: true
   validates :post, presence: true
-  validates :post_id, uniqueness: true
   validates :seen_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :view_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :view_seconds, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
