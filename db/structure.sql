@@ -528,7 +528,7 @@ CREATE INDEX index_accounts_on_user_id ON accounts USING btree (user_id);
 -- Name: index_authors_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_authors_on_name ON authors USING btree (name);
+CREATE UNIQUE INDEX index_authors_on_name ON authors USING btree (name);
 
 
 --
