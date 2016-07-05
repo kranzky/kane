@@ -7,6 +7,7 @@ gem 'puma', '~> 3.4.0'
 gem 'turbolinks', '~> 5.0.0'
 gem 'jbuilder', '~> 2.5.0'
 
+gem 'sidekiq', '~> 4.1.2'
 gem 'embedly', '~> 1.9.1'
 
 gem 'sass-rails', '~> 5.0.5'

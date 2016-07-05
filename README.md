@@ -7,7 +7,6 @@ TODO
 ----
 
 * Finish writing specs
-* Job to extract content
 * Create basic layout that displays the feed
 * Twitter authentication
 * Ability to post
