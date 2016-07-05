@@ -6,12 +6,17 @@ Share your best link each day.
 TODO
 ----
 
-* Finish writing specs
 * Create basic layout that displays the feed
+  + possibly extract all images so we know sizes
+  + run jobs to extract everything
+* Finish writing specs
+* Deploy to Heroku
 * Twitter authentication
 * Ability to post
+  + run job to extract content
+  + post immediately initially
 * Job to schedule posts
-* Deploy to Heroku
+  + post queue and timezone stuff
 
 Copyright
 ---------
