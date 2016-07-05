@@ -5,4 +5,12 @@ class Post < ApplicationRecord
 
   validates :user, presence: true
   validates :url, presence: true
+
+  after_save :_extract_content
+
+  protected
+
+  def _extract_content
+    ExtractContentJob.perform_later(self)
+  end
 end
