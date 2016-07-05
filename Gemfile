@@ -14,20 +14,20 @@ gem 'slim', '~> 3.0.7'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'underscore-rails', '~> 1.8.3'
-gem 'semantic-ui-sass', '~> 2.2.1.0'
+gem 'semantic-ui-sass', '~> 2.2.1.1'
 gem 'uglifier', '~> 3.0.0'
 
 group :development do
   gem 'gemfile_updater', '~> 0.1.0'
   gem 'web-console', '~> 3.3.0'
   gem 'listen', '~> 3.1.5'
-  gem 'spring', '~> 1.7.1'
+  gem 'spring', '~> 1.7.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rails-erd', '~> 1.4.7'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.5.0.beta4'
+  gem 'rspec-rails', '~> 3.5.0'
   gem 'factory_girl_rails', '~> 4.7.0'
   gem 'faker', '~> 1.6.3'
   gem 'database_cleaner', '~> 1.5.3'
@@ -40,5 +40,5 @@ end
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'lograge', '~> 0.3.6'
+  gem 'lograge', '~> 0.4.0'
 end
