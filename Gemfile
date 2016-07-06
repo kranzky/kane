@@ -11,7 +11,7 @@ gem 'sidekiq', '~> 4.1.2'
 gem 'embedly', '~> 1.9.1'
 
 gem 'sass-rails', '~> 5.0.5'
-gem 'slim', '~> 3.0.7'
+gem 'slim-rails', '~> 3.1.0'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'underscore-rails', '~> 1.8.3'
