@@ -20,7 +20,7 @@ gem 'uglifier', '~> 3.0.0'
 
 group :development do
   gem 'gemfile_updater', '~> 0.1.0'
-  gem 'web-console', '~> 3.3.0'
+  gem 'web-console', '~> 3.3.1'
   gem 'listen', '~> 3.1.5'
   gem 'spring', '~> 1.7.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -41,5 +41,5 @@ end
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'lograge', '~> 0.4.0'
+  gem 'lograge', '~> 0.4.1'
 end

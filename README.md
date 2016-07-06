@@ -9,6 +9,7 @@ TODO
 * Create basic layout that displays the feed
   + possibly extract all images so we know sizes
   + run jobs to extract everything
+  + random thumbnail: http://loremflickr.com/800/450/keyword
 * Finish writing specs
 * Deploy to Heroku
 * Twitter authentication
