@@ -29,5 +29,24 @@ html
   body
     .ui.fixed.inverted.menu
       .ui.container
+        / .left.item
+        /   button.ui.inverted.green.button
+        /     i.linkify.icon
+        /     | Share
+        /   a.item
+        /     | Queue
+        /     .floating.ui.green.label 3
+        /   a.item
+        /     | Follow
+        /   a.item
+        /     | View
+        /     .floating.ui.red.label 7
+        /   a.item
+        /     | History
+        img.ui.centered.image src="#{image_path("logo.png")}"
+        / .right.item
+        /   .ui.inverted.transparent.icon.input
+        /     input type="text" placeholder="Search..."
+        /     i.search.icon
     .ui.main.text.container
       = yield

@@ -7,14 +7,9 @@ TODO
 ----
 
 * Create menu bar
-  + Centred logo (also favicon)
   + Search, credits, avatar with menu:
     - Login with Twitter, or:
     - Queue / Posts / Stats / --- / Profile / Account / Sign Out
-  + Hamburger menu on left that expands to title bar on wider displays
-    - Share a Link
-    - Read
-    - Follow
 * Display sidebar when article is "read" (i.e. ten seconds, 50% or whatever)
   + Author(s)
   + Source
