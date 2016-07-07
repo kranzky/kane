@@ -1,4 +1,24 @@
 #medium
-  h1
-    = @content.title
-  = @content.body.html_safe
+  .ui.fluid.raised.card
+    .image
+      img src="#{@content.thumbnail}"
+    .content
+      .header
+        = @content.title
+      .description
+        = @content.description
+    .extra.content
+      i.user.icon
+      | 22 Views
+      .ui.right.floated.large.buttons
+        button.ui.positive.labeled.icon.button
+          i.checkmark.icon
+          | Read
+        .or
+        button.ui.right.labeled.icon.button
+          i.remove.icon
+          | Skip
+  .ui.container
+    h1
+      = @content.title
+    = @content.body.html_safe
