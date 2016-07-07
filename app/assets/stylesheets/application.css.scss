@@ -5,6 +5,73 @@
 
 @import "semantic-ui";
 
+$kaneFont : "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $kaneFont !important;
+  margin-top: 29px !important;
+}
+
+h1 {
+  font-size: 36px !important;
+  font-weight: 600 !important;
+  margin-bottom: -19px !important;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-size: 28px !important;
+  color: rgba(0, 0, 0, .44) !important;
+  font-weight: 300 !important;
+  margin-bottom: -19px !important;
+}
+
+p {
+  margin-top: 29px !important;
+}
+
+blockquote {
+  font-style: italic !important;
+  border-left: 3px solid rgba(0,0,0,.8) !important;
+  padding-left: 20px !important;
+  margin-left: -23px !important;
+  padding-bottom: 3px !important;
+}
+
+pre {
+  font-family: Menlo,Monaco,"Courier New",Courier,monospace !important;
+  background: rgba(0,0,0,.05) !important;
+  padding: 20px !important;
+  font-size: 16px !important; 
+  margin-top: 44px !important;
+}
+
+a {
+  color: inherit !important;
+  background-color: transparent !important;
+  cursor: auto !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0) 50%,rgba(0,0,0,.6) 50%) !important;
+  background-repeat: repeat-x !important;
+  background-size: 2px 2px !important;
+  background-position: 0 22px !important;
+}
+
+.ui {
+  font-family: $kaneFont !important;
+  font-size: 21px !important;
+  line-height: 1.58 !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, .7) !important;
+}
+
 .main.container {
-  margin-top: 7em;
+  margin-top: 100px;
+  margin-bottom: 40px;
 }
