@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.5.0'
 
 gem 'sidekiq', '~> 4.1.2'
 gem 'embedly', '~> 1.9.1'
+gem 'cloudinary', '~> 1.2.0'
 
 gem 'sass-rails', '~> 5.0.5'
 gem 'slim-rails', '~> 3.1.0'
@@ -28,9 +29,9 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails', '~> 3.5.1'
   gem 'factory_girl_rails', '~> 4.7.0'
-  gem 'faker', '~> 1.6.3'
+  gem 'faker', '~> 1.6.4'
   gem 'database_cleaner', '~> 1.5.3'
 end
 

@@ -20,7 +20,7 @@
           | Skip
 #kane_content
   .ui.segment
-    .ui.right.rail
+    .ui.right.rail style="display:none;"
       table.ui.small.inverted.table
         tr
           th.center.aligned Source
@@ -34,7 +34,6 @@
         tr
           td.center.aligned
             a.ui.label href="#{@content.url}"
-              i.external.icon
               | View in Browser 
         - if @content.authors.present?
           tr
