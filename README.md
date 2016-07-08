@@ -6,36 +6,9 @@ Share your best link each day.
 TODO
 ----
 
-transformation = [
-  {
-    gravity: "auto",
-    aspect_ratio: "3:1",
-    crop: "fill"
-  },
-  {
-    width: "auto",
-    quality: "auto",
-    fetch_format: "auto",
-    dpr: "auto"
-  },
-  {
-    width: 1200,
-    crop: "limit"
-  }
-]
-cl_image_tag(name, client_hints: true, transformation: transformation)
-
-
-
 * Extract all the articles
-  + Use random thumbnail if missing or too small: http://loremflickr.com/1200/1200/keyword
-  + Use cloudinary migrator to store all images
-    - favicon\_url
-    - images
-      - if in content, replace URL in content
-      - if not in content, choose one with largest width, where height > 100
-  + Use cloudinary URL arguments to crop and resize on retrieval
-    cl_image_tag("white_cat.jpg", :client_hints=>true, :transformation=>[{:gravity=>"auto", :aspect_ratio=>"3:1", :crop=>"fill"}, {:width=>"auto", :quality=>"auto", :fetch_format=>:auto, :dpr=>"auto"}, {:width=>1200, :crop=>"limit"}])
+  + Improve image matching in body
+  + Improve layout of body
   + Load ten at random
   + Display one at a time as cards
   + Display compact card as a feed once they're all seen
