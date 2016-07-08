@@ -1,5 +1,5 @@
-#medium
-  .ui.fluid.raised.card
+#kane_summary
+  .ui.fluid.raised.card style="display:none;"
     .image
       img src="#{@content.thumbnail}"
     .content
@@ -18,7 +18,54 @@
         button.ui.right.labeled.icon.button
           i.remove.icon
           | Skip
-  .ui.container
+#kane_content
+  .ui.segment
+    .ui.right.rail
+      table.ui.small.inverted.table
+        tr
+          th.center.aligned Source
+        tr
+          td.center.aligned
+            a.ui.blue.image.label href="#{@content.source.url}"
+              img src="#{@content.source.favicon}"
+              = @content.source.name
+        tr
+          th.center.aligned Original Link
+        tr
+          td.center.aligned
+            a.ui.label href="#{@content.url}"
+              i.external.icon
+              | View in Browser 
+        - if @content.authors.present?
+          tr
+            th.center.aligned Created By
+          tr
+            td.center.aligned
+              .ui.list
+                - @content.authors.each do |author|
+                  .item = author.name
+        tr
+          th.center.aligned Shared By
+        tr
+          td.center.aligned
+            .ui.list
+              - @content.posts.each do |post|
+                .item = post.user.profile.name
+        tr
+          th.center.aligned Statistics
+        tr
+          td.center.aligned
+            .ui.mini.inverted.statistic
+              .value 37
+              .label Views
+            .ui.mini.inverted.statistic
+              .value 5
+              .label Reads
+        tr
+          th.center.aligned Reactions
+        tr
+          td.center.aligned
+            | :+1:
     h1
       = @content.title
     = @content.body.html_safe

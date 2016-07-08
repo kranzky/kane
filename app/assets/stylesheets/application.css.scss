@@ -12,8 +12,10 @@ $kaneFont : -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "
   margin-bottom: 40px;
 }
 
-.ui {
-  #medium {
+#kane_summary,
+#kane_content {
+  .ui.segment,
+  .ui.fluid.raised.card {
     font-family: $kaneFont;
     font-size: 21px;
     line-height: 1.58;

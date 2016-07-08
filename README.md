@@ -6,12 +6,6 @@ Share your best link each day.
 TODO
 ----
 
-* Display sidebar when article is "read" (i.e. ten seconds, 50% or whatever)
-  + Author(s)
-  + Source
-  + Original
-  + Stats (seen, read)
-  + Reactions
 * Extract all the articles
   + Use random thumbnail if missing: http://loremflickr.com/800/450/keyword
   + Resize thumbnail to fixed dimensions
