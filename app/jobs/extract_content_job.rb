@@ -30,19 +30,25 @@ class ExtractContentJob < ApplicationJob
     content = results.content
     keywords = results.keywords.map { |keyword| keyword["name"] }
     results.images.each do |image|
-      if content =~ /#{image['url']}/
-        name = _upload(image['url'])
-        content.gsub!(/#{image['url']}/, "__CLOUDINARY(#{name})__") 
-      else
-        next if image['width'] < 200 || image['height'] < 200
-        next if thumbnail.present? && thumbnail['width'] > image['width']
-        thumbnail = image
-      end
+      next if content =~ /#{image['url']}/
+      next if image['width'] < 200 || image['height'] < 200
+      next if thumbnail.present? && thumbnail['width'] > image['width']
+      thumbnail = image
     end
     if thumbnail.nil?
       thumbnail = _upload(_flickr(keywords))
     else
       thumbnail = _upload(thumbnail['url'])
+    end
+    content.scan(/<a href=(['"].+?['"])><img src=(['"].+?['"])><\/a>/).each do |url, img|
+      match =
+        if url[1...-1] == img[1...-1]
+          "<a href=#{url}><img src=#{img}><\/a>"
+        else
+          "<img src=#{img}>"
+        end
+      sub = "__CLOUDINARY'#{_upload(img[1...-1])}'__"
+      content.gsub!(match, sub)
     end
     post.content =
       Content.create!(
