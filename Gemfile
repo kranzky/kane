@@ -17,7 +17,8 @@ gem 'slim-rails', '~> 3.1.0'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'underscore-rails', '~> 1.8.3'
-gem 'semantic-ui-sass', '~> 2.2.1.1'
+gem 'semantic-ui-sass', '~> 2.2.2.0'
+gem 'gemojione', '~> 2.6.1'
 gem 'uglifier', '~> 3.0.0'
 
 group :development do
