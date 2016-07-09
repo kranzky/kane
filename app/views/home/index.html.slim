@@ -19,7 +19,7 @@
           i.remove.icon
           | Skip
 #kane_content
-  .ui.segment
+  .ui.segment style="display:none;"
     .ui.right.rail style="display:none;"
       table.ui.small.inverted.table
         tr
@@ -65,6 +65,7 @@
         tr
           td.center.aligned
             | :+1:
-    h1
-      = @content.title
-    = @content.body.html_safe
+    .container
+      h1
+        = @content.title
+      = @content.body.html_safe
