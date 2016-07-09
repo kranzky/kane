@@ -1,7 +1,7 @@
 #kane_summary
   .ui.fluid.raised.card style="display:none;"
     .image
-      img src="#{@thumbnail}"
+      img.ui.fluid.image.transition.visible src="#{@thumbnail_empty}" data-src="#{@thumbnail}"
     .content
       .header
         = @content.title

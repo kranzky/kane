@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @content = Content.random
+    @thumbnail_empty = _cloudinary("empty.png", "3:1")
     @thumbnail = _cloudinary(@content.thumbnail, "3:1")
   end
 
