@@ -18,6 +18,7 @@ TODO
 * Process all the content
   + One-by-one, extract all images and don't modify content
   + Improve font
+  + Always open links in new window
   + Display images with empty preview
   + Make sure each article looks fantastic
   + Make sure it displays great on mobile

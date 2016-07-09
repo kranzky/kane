@@ -5,7 +5,9 @@
 
 @import "semantic-ui";
 
-$kaneFont : -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$kaneSansSerifFont : "Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+$kaneSerifFont : "Times New Roman",serif;
+$kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courier New","Courier",monospace;
 
 .main.container {
   margin-top: 100px;
@@ -14,12 +16,18 @@ $kaneFont : -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "
 
 #kane_summary,
 #kane_content {
+  .ui.segment {
+    font-family: $kaneSerifFont;
+  }
+
+  .ui.fluid.raised.card {
+    font-family: $kaneSansSerifFont;
+  }
+
   .ui.segment,
   .ui.fluid.raised.card {
-    font-family: $kaneFont;
-    font-size: 21px;
-    line-height: 1.58;
     font-weight: 400;
+    font-size: 1.6rem;
     color: rgba(0, 0, 0, .7);
 
     h1,
@@ -30,26 +38,23 @@ $kaneFont : -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "
     .header,
     .description
     {
-      font-family: $kaneFont;
+      font-family: $kaneSansSerifFont;
     }
 
     h1,
     .header
     {
-      font-size: 36px;
+      font-size: 2.4rem;
       font-weight: 600;
-      margin-top: 0;
-      margin-bottom: -19px;
     }
 
     h2,
     h3,
     h4,
     h5 {
-      font-size: 28px;
       color: rgba(0, 0, 0, .44);
+      font-size: 2.0rem;
       font-weight: 300;
-      margin-top: 29px;
       margin-bottom: -19px;
     }
 
@@ -67,11 +72,17 @@ $kaneFont : -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "
       padding-bottom: 3px;
     }
 
+    code,
+    kbd,
+    pre,
+    samp {
+      font-family: $kaneFixedFont;
+      font-size: 1.2rem;
+    }
+
     pre {
-      font-family: Menlo,Monaco,"Courier New",Courier,monospace;
       background: rgba(0,0,0,.05);
       padding: 20px;
-      font-size: 16px; 
       margin-top: 44px;
     }
 
