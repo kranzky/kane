@@ -21,50 +21,30 @@
 #kane_content
   .ui.segment style="display:none;"
     .ui.right.rail style="display:none;"
-      table.ui.small.inverted.table
-        tr
-          th.center.aligned Source
-        tr
-          td.center.aligned
-            a.ui.blue.image.label href="#{@content.source.url}"
-              img src="#{@content.source.favicon}"
-              = @content.source.name
-        tr
-          th.center.aligned Original Link
-        tr
-          td.center.aligned
-            a.ui.label href="#{@content.url}"
-              | View in Browser 
-        - if @content.authors.present?
-          tr
-            th.center.aligned Created By
-          tr
-            td.center.aligned
+      .ui.raised.card
+        .content
+          .header
+            a.ui.image.label href="#{@content.source.url}"
+              img.ui.mini.image.transition.visible src="#{@favicon_empty}" data-src="#{@favicon}"
+              = @content.source.name.html_safe
+          .meta
+            i = time_ago_in_words(@published).capitalize + " ago"
+          .description
+            - if @content.authors.size > 0
+              | By
               .ui.list
                 - @content.authors.each do |author|
-                  .item = author.name
-        tr
-          th.center.aligned Shared By
-        tr
-          td.center.aligned
-            .ui.list
-              - @content.posts.each do |post|
-                .item = post.user.profile.name
-        tr
-          th.center.aligned Statistics
-        tr
-          td.center.aligned
-            .ui.mini.inverted.statistic
-              .value 37
-              .label Views
-            .ui.mini.inverted.statistic
-              .value 5
-              .label Reads
-        tr
-          th.center.aligned Reactions
-        tr
-          td.center.aligned
-            | :+1:
+                  .item
+                    a href="#{author.url}"
+                      = author.name
+            a.ui.image.label href="#{@content.url}"
+              | View Original
+        .extra.content
+          a.ui.image.label href="https://twitter.com/#{@post.user.name}"
+            img.ui.mini.image.transition.visible src="#{@avatar_empty}" data-src="#{@avatar}"
+            = @post.user.profile.name
+        .extra.content
+          | Reactions
     .container
       h1
         = @content.title

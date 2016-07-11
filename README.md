@@ -6,6 +6,11 @@ Share your best link each day.
 TODO
 ----
 
+* Process all the content
+  + Improve formatting of sidebar
+  + Always open links in new window
+  + One-by-one, extract all images and don't modify content directly
+  + Display images with empty preview
 * First version of interface
   + Load ten posts (with content) at random
   + Format as JSON with everything we need
@@ -14,14 +19,6 @@ TODO
   + When reading, make sidebar sticky and appear only when read
   + Easily close content when reading
   + Make title bar appear/hide when show
-  + Add a helper nag thing with Orson sketch
-* Process all the content
-  + One-by-one, extract all images and don't modify content
-  + Improve font
-  + Always open links in new window
-  + Display images with empty preview
-  + Make sure each article looks fantastic
-  + Make sure it displays great on mobile
 * Deploy to Heroku and share with the guys
   + Add skylight and rollbar and papertrail
 ---

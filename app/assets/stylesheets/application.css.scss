@@ -16,18 +16,19 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
 
 #kane_summary,
 #kane_content {
-  .ui.segment {
-    font-family: $kaneSerifFont;
-  }
-
   .ui.fluid.raised.card {
     font-family: $kaneSansSerifFont;
+    font-size: 1.6rem;
+  }
+
+  .ui.segment {
+    font-family: $kaneSerifFont;
+    font-size: 1.8rem;
   }
 
   .ui.segment,
   .ui.fluid.raised.card {
     font-weight: 400;
-    font-size: 1.6rem;
     color: rgba(0, 0, 0, .7);
 
     h1,
@@ -44,7 +45,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
     h1,
     .header
     {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 600;
     }
 
@@ -53,7 +54,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
     h4,
     h5 {
       color: rgba(0, 0, 0, .44);
-      font-size: 2.0rem;
+      font-size: 2.1rem;
       font-weight: 300;
       margin-bottom: -19px;
     }
