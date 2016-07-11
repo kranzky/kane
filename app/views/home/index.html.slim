@@ -28,23 +28,29 @@
               img.ui.mini.image.transition.visible src="#{@favicon_empty}" data-src="#{@favicon}"
               = @content.source.name.html_safe
           .meta
-            i = time_ago_in_words(@published).capitalize + " ago"
+            i = "Published #{time_ago_in_words(@published).capitalize} ago"
           .description
             - if @content.authors.size > 0
-              | By
+              | By:
               .ui.list
                 - @content.authors.each do |author|
                   .item
                     a href="#{author.url}"
                       = author.name
-            a.ui.image.label href="#{@content.url}"
-              | View Original
+          .description
+            | Shared by:
+            .ui.list
+              .item
+                a.ui.image.label href="https://twitter.com/#{@post.user.name}"
+                  img.ui.mini.image.transition.visible src="#{@avatar_empty}" data-src="#{@avatar}"
+                  = @post.user.profile.name
         .extra.content
-          a.ui.image.label href="https://twitter.com/#{@post.user.name}"
-            img.ui.mini.image.transition.visible src="#{@avatar_empty}" data-src="#{@avatar}"
-            = @post.user.profile.name
-        .extra.content
-          | Reactions
+          span.right.floated
+            a.ui.label href="#{@content.url}"
+              | View Original 
+              i.external.square.icon
+          /span
+          / img.ui.mini.image src="#{Gemojione.image_url_for_name('+1')}"
     .container
       h1
         = @content.title

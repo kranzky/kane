@@ -16,7 +16,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
 
 #kane_summary,
 #kane_content {
-  .ui.fluid.raised.card {
+  .ui.raised.card {
     font-family: $kaneSansSerifFont;
     font-size: 1.6rem;
   }
@@ -27,7 +27,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
   }
 
   .ui.segment,
-  .ui.fluid.raised.card {
+  .ui.raised.card {
     font-weight: 400;
     color: rgba(0, 0, 0, .7);
 
@@ -96,6 +96,53 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
       background-repeat: repeat-x;
       background-size: 2px 2px;
       background-position: 0 22px;
+    }
+  }
+}
+
+#kane_content {
+  .ui.raised.card {
+    .header {
+      font-size: 1.6rem;
+      a {
+        font-size: 1.6rem;
+        padding: 5px;
+      }
+    }
+    .description {
+      margin-top: 10px;
+      a {
+        padding: 0;
+        font-size: 1.0em;
+        font-weight: normal;
+        margin-top: 5px;
+      }
+      .list {
+        .item {
+          margin-left: 1.0em;
+        }
+      }
+    }
+    .meta {
+      font-size: 1.2rem;
+    }
+    .description,
+    .extra.content {
+      font-size: 1.0rem;
+    }
+    .extra.content {
+      a {
+        padding: 0;
+        font-size: 1.0rem;
+        font-weight: normal;
+      }
+    }
+    a {
+      color: inherit;
+      background-color: transparent;
+      cursor: auto;
+      text-decoration: none;
+      background-image: none;
     }
   }
 }
