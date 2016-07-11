@@ -18,18 +18,31 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
 #kane_content {
   .ui.raised.card {
     font-family: $kaneSansSerifFont;
-    font-size: 1.6rem;
+    font-size: 18px;
+    .content {
+      .header,
+      .description {
+        color: rgba(0, 0, 0, .7);
+      }
+      .description {
+        font-family: $kaneSerifFont;
+        font-size: 21px;
+      }
+    }
+    .extra.content {
+      font-size: 21px;
+    }
   }
 
   .ui.segment {
     font-family: $kaneSerifFont;
-    font-size: 1.8rem;
+    font-size: 21px;
   }
 
   .ui.segment,
   .ui.raised.card {
-    font-weight: 400;
     color: rgba(0, 0, 0, .7);
+    font-weight: 400;
 
     h1,
     h2,
@@ -45,7 +58,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
     h1,
     .header
     {
-      font-size: 2.5rem;
+      font-size: 31px;
       font-weight: 600;
     }
 
@@ -54,7 +67,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
     h4,
     h5 {
       color: rgba(0, 0, 0, .44);
-      font-size: 2.1rem;
+      font-size: 24px;
       font-weight: 300;
       margin-bottom: -19px;
     }
@@ -78,7 +91,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
     pre,
     samp {
       font-family: $kaneFixedFont;
-      font-size: 1.2rem;
+      font-size: 16px;
     }
 
     pre {
@@ -102,38 +115,41 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
 
 #kane_content {
   .ui.raised.card {
-    .header {
-      font-size: 1.6rem;
-      a {
-        font-size: 1.6rem;
-        padding: 5px;
-      }
-    }
-    .description {
-      margin-top: 10px;
-      a {
-        padding: 0;
-        font-size: 1.0em;
-        font-weight: normal;
-        margin-top: 5px;
-      }
-      .list {
-        .item {
-          margin-left: 1.0em;
+    .content {
+      .header {
+        font-size: 18px;
+        a {
+          font-size: 18px;
+          padding: 5px;
         }
       }
+      .description {
+        font-family: $kaneSansSerifFont;
+        margin-top: 10px;
+        a {
+          padding: 0;
+          font-size: 16px;
+          font-weight: normal;
+          margin-top: 5px;
+        }
+        .list {
+          .item {
+            margin-left: 1.2rem;
+          }
+        }
+      }
+      .meta {
+        font-size: 14px;
+      }
+      .description {
+        font-size: 16px;
+      }
     }
-    .meta {
-      font-size: 1.2rem;
-    }
-    .description,
     .extra.content {
-      font-size: 1.0rem;
-    }
-    .extra.content {
+      font-size: 16px;
       a {
         padding: 0;
-        font-size: 1.0rem;
+        font-size: 16px;
         font-weight: normal;
       }
     }

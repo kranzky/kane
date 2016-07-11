@@ -7,7 +7,6 @@ TODO
 ----
 
 * Process all the content
-  + Improve formatting of sidebar
   + Always open links in new window
   + One-by-one, extract all images and don't modify content directly
   + Display images with empty preview
