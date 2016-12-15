@@ -176,7 +176,8 @@ CREATE TABLE contents (
     access content_access DEFAULT 'native'::content_access NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    images jsonb DEFAULT '"{}"'::jsonb NOT NULL
 );
 
 
@@ -684,6 +685,6 @@ ALTER TABLE ONLY posts
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160624080353'), ('20160625062827'), ('20160625062937'), ('20160625062957'), ('20160625063047'), ('20160625063116'), ('20160625063505'), ('20160625063541');
+INSERT INTO schema_migrations (version) VALUES ('20160624080353'), ('20160625062827'), ('20160625062937'), ('20160625062957'), ('20160625063047'), ('20160625063116'), ('20160625063505'), ('20160625063541'), ('20160712000745');
 
 

@@ -3,8 +3,9 @@ class HomeController < ApplicationController
 
   def index
     @post = Post.includes(:content, :user)
-      .where.not(contents: { id: nil })
-      .random
+      .where.not(content_id: nil)
+      .order(updated_at: :desc)
+      .first
     @content = @post.content
     @thumbnail_empty = _cloudinary("empty.png", "3:1")
     @thumbnail = _cloudinary(@content.thumbnail, "3:1")
@@ -12,16 +13,18 @@ class HomeController < ApplicationController
     @favicon = _cloudinary(@content.source.favicon, "1:1")
     @avatar_empty = _cloudinary("empty.png", "1:1")
     @avatar = _cloudinary_twitter(@post.user.name, "1:1")
-    @published = @content.published_at || @content.created_at
+    @published = [@content.published_at, @post.posted_at].compact.min 
   end
 
   protected
 
   def _cloudinary_twitter(name, ratio = nil)
-    _cloudinary("#{name}.jpg", "1:1", true)
+    name = name.nil? ? "empty.png" : "#{name}.jpg"
+    _cloudinary(name, "1:1", true)
   end
 
   def _cloudinary(name, ratio = nil, twitter=false)
+    name ||= "empty.png"
     transformation = [
       {
         gravity: "auto",

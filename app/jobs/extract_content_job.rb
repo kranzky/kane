@@ -27,7 +27,7 @@ class ExtractContentJob < ApplicationJob
         object.favicon = _upload(results.favicon_url)
       end
     thumbnail = nil
-    content = results.content
+    content = results.content || ""
     keywords = results.keywords.map { |keyword| keyword["name"] }
     results.images.each do |image|
       next if content =~ /#{image['url']}/
@@ -40,15 +40,12 @@ class ExtractContentJob < ApplicationJob
     else
       thumbnail = _upload(thumbnail['url'])
     end
-    content.scan(/<a href=(['"].+?['"])><img src=(['"].+?['"])><\/a>/).each do |url, img|
-      match =
-        if url[1...-1] == img[1...-1]
-          "<a href=#{url}><img src=#{img}><\/a>"
-        else
-          "<img src=#{img}>"
-        end
-      sub = "__CLOUDINARY'#{_upload(img[1...-1])}'__"
-      content.gsub!(match, sub)
+    images = {}
+    content.scan(/<img src=(['"].+?['"])>/).each do |sources|
+      sources.each do |src|
+        url = src[1...-1]
+        images[url] ||= _upload(url)
+      end
     end
     post.content =
       Content.create!(
@@ -58,7 +55,9 @@ class ExtractContentJob < ApplicationJob
         title: results.title,
         description: results.description,
         body: content,
+        images: images,
         thumbnail: thumbnail,
+        access: content.present? ? :native : :external,
         language: results.language,
         tags: keywords,
         published_at: results.published
@@ -69,6 +68,7 @@ class ExtractContentJob < ApplicationJob
   protected
 
   def _upload(url)
+    return nil unless url.present?
     results = Cloudinary::Uploader.upload(url)
     "#{results['public_id']}.#{results['format']}"
   end

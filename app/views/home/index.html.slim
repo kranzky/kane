@@ -8,8 +8,7 @@
       .description
         = @content.description
     .extra.content
-      i.user.icon
-      | 22 Views
+      | (top five reactions and add reaction)
       .ui.right.floated.large.buttons
         button.ui.positive.labeled.icon.button
           i.checkmark.icon
@@ -28,7 +27,7 @@
               img.ui.mini.image.transition.visible src="#{@favicon_empty}" data-src="#{@favicon}"
               = @content.source.name.html_safe
           .meta
-            i = "Published #{time_ago_in_words(@published).capitalize} ago"
+            i = "Published #{time_ago_in_words(@published)} ago"
           .description
             - if @content.authors.size > 0
               | By:
@@ -45,9 +44,12 @@
                   img.ui.mini.image.transition.visible src="#{@avatar_empty}" data-src="#{@avatar}"
                   = @post.user.profile.name
         .extra.content
+          span.left.floated
+            i.users.icon
+            | 22 Views
           span.right.floated
             a.ui.label href="#{@content.url}"
-              | Link 
+              | Original Link 
               i.external.square.icon
           /span
           / img.ui.mini.image src="#{Gemojione.image_url_for_name('+1')}"

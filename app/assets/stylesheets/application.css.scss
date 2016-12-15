@@ -5,9 +5,91 @@
 
 @import "semantic-ui";
 
-$kaneSansSerifFont : "Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
-$kaneSerifFont : "Times New Roman",serif;
-$kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courier New","Courier",monospace;
+// TODO: use web font loader
+@font-face {
+  font-family: "Noto Sans";
+  src: url("NotoSans-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("NotoSans-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("NotoSans-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("NotoSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("NotoSans-Italic.ttf");
+  font-weight: 400;
+  font-style: oblique;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("NotoSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("NotoSerif-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Noto Serif";
+  src: url("NotoSerif-Bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Noto Serif";
+  src: url("NotoSerif-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Noto Serif";
+  src: url("NotoSerif-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Noto Serif";
+  src: url("NotoSerif-Italic.ttf");
+  font-weight: 400;
+  font-style: oblique;
+}
+@font-face {
+  font-family: "Noto Serif";
+  src: url("NotoSerif-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("Inconsolata-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inconsolata";
+  src: url("Inconsolata-Bold.ttf");
+  font-weight: 700;
+}
+
+$kaneSansSerifFont : "Noto Sans",webdings,sans-serif;
+$kaneSerifFont : "Noto Serif",webdings,serif;
+$kaneFixedFont : "Inconsolata",webdings,monospace;
 
 .main.container {
   margin-top: 100px;
@@ -59,7 +141,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
     .header
     {
       font-size: 31px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     h2,
@@ -129,7 +211,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
         a {
           padding: 0;
           font-size: 16px;
-          font-weight: normal;
+          font-weight: 400;
           margin-top: 5px;
         }
         .list {
@@ -150,7 +232,7 @@ $kaneFixedFont : "Inconsolata","Hack","Menlo","Monaco","Droid Sans Mono","Courie
       a {
         padding: 0;
         font-size: 16px;
-        font-weight: normal;
+        font-weight: 400;
       }
     }
     a {
